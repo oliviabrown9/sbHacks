@@ -9,8 +9,11 @@
 import UIKit
 import Firebase
 import CoreMotion
+import Starscream
 
 class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    
+    fileprivate var socketManager: WebSocketManager?
     
     var databaseRef: DatabaseReference!
     let motionManager = CMMotionManager()
@@ -31,6 +34,7 @@ class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
             databaseRef.child("Users").updateChildValues(["clipboardText": myString])
         }
     }
+    
     @IBAction func gyroButtonPressed(_ sender: Any) {
         if let gyroData = motionManager.gyroData {
             let gyroX = gyroData.rotationRate.x
@@ -39,6 +43,7 @@ class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
             self.databaseRef.child("Users").updateChildValues(["GyroX": gyroX, "GyroY": gyroY, "GyroZ": gyroZ])
         }
     }
+    
     @IBAction func takePhoto(_ sender: AnyObject) {
         if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.camera) {
             let imagePicker = UIImagePickerController()
@@ -64,11 +69,18 @@ class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let socket = WebSocket(url: URL(string: "https://google.com")!)
+        socket.delegate = self
+        socket.connect()
+        
         styleButtons()
         motionManager.gyroUpdateInterval = 1.0/60.0
         motionManager.startGyroUpdates()
         databaseRef = Database.database().reference()
     }
+    
+    
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         if let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
@@ -121,3 +133,32 @@ extension UIView {
         gradient.cornerRadius = 12
     }
 }
+
+extension HomeViewController : WebSocketDelegate {
+    func websocketDidConnect(socket: WebSocketClient) {
+    }
+    
+    func websocketDidDisconnect(socket: WebSocketClient, error: Error?) {
+    }
+    
+    func websocketDidReceiveMessage(socket: WebSocketClient, text: String) {
+        //        let dataType = WebSocketManager.processJsonTextFromServer(text)
+        guard let data = text.data(using: .utf16),
+            let jsonData = try? JSONSerialization.jsonObject(with: data),
+            let jsonDict = jsonData as? [String: Any],
+            let dataType = jsonDict["type"] as? String else {
+                return
+        }
+        if dataType == "string" {
+            performSegue(withIdentifier: "toStringScreen", sender: self)
+        }
+        else if dataType == "image" {
+            performSegue(withIdentifier: "toImageScreen", sender: self)
+        }
+    }
+    
+    func websocketDidReceiveData(socket: WebSocketClient, data: Data) {
+        return
+    }
+}
+

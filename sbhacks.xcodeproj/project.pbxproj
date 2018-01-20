@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0F11F3BD341B5ADE3EF8C306 /* Pods_sbhacks.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA72F70AA5F3B5183C89392B /* Pods_sbhacks.framework */; };
+		757775602013F232003A1419 /* WebsocketManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7577755F2013F232003A1419 /* WebsocketManager.swift */; };
 		75FEFF842013514500DE97A2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75FEFF832013514500DE97A2 /* AppDelegate.swift */; };
 		75FEFF862013514500DE97A2 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75FEFF852013514500DE97A2 /* HomeViewController.swift */; };
 		75FEFF892013514500DE97A2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75FEFF872013514500DE97A2 /* Main.storyboard */; };
@@ -18,6 +19,7 @@
 
 /* Begin PBXFileReference section */
 		41682FED37AA9747E7494245 /* Pods-sbhacks.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-sbhacks.debug.xcconfig"; path = "Pods/Target Support Files/Pods-sbhacks/Pods-sbhacks.debug.xcconfig"; sourceTree = "<group>"; };
+		7577755F2013F232003A1419 /* WebsocketManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebsocketManager.swift; sourceTree = "<group>"; };
 		75FEFF802013514500DE97A2 /* sbhacks.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = sbhacks.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		75FEFF832013514500DE97A2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		75FEFF852013514500DE97A2 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
@@ -82,6 +84,7 @@
 			children = (
 				75FEFF832013514500DE97A2 /* AppDelegate.swift */,
 				75FEFF852013514500DE97A2 /* HomeViewController.swift */,
+				7577755F2013F232003A1419 /* WebsocketManager.swift */,
 				75FEFF872013514500DE97A2 /* Main.storyboard */,
 				75FEFF8A2013514500DE97A2 /* Assets.xcassets */,
 				75FEFF8C2013514500DE97A2 /* LaunchScreen.storyboard */,
@@ -231,6 +234,7 @@
 			files = (
 				75FEFF862013514500DE97A2 /* HomeViewController.swift in Sources */,
 				75FEFF842013514500DE97A2 /* AppDelegate.swift in Sources */,
+				757775602013F232003A1419 /* WebsocketManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
