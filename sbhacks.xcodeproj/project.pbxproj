@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0F11F3BD341B5ADE3EF8C306 /* Pods_sbhacks.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA72F70AA5F3B5183C89392B /* Pods_sbhacks.framework */; };
 		75FEFF842013514500DE97A2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75FEFF832013514500DE97A2 /* AppDelegate.swift */; };
 		75FEFF862013514500DE97A2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75FEFF852013514500DE97A2 /* ViewController.swift */; };
 		75FEFF892013514500DE97A2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75FEFF872013514500DE97A2 /* Main.storyboard */; };
@@ -15,6 +16,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		41682FED37AA9747E7494245 /* Pods-sbhacks.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-sbhacks.debug.xcconfig"; path = "Pods/Target Support Files/Pods-sbhacks/Pods-sbhacks.debug.xcconfig"; sourceTree = "<group>"; };
 		75FEFF802013514500DE97A2 /* sbhacks.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = sbhacks.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		75FEFF832013514500DE97A2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		75FEFF852013514500DE97A2 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -22,6 +24,8 @@
 		75FEFF8A2013514500DE97A2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		75FEFF8D2013514500DE97A2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		75FEFF8F2013514500DE97A2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AA72F70AA5F3B5183C89392B /* Pods_sbhacks.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_sbhacks.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		EE97F6080AE013718391C725 /* Pods-sbhacks.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-sbhacks.release.xcconfig"; path = "Pods/Target Support Files/Pods-sbhacks/Pods-sbhacks.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,17 +33,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0F11F3BD341B5ADE3EF8C306 /* Pods_sbhacks.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3B416DE236B2A308F9FA69E5 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				41682FED37AA9747E7494245 /* Pods-sbhacks.debug.xcconfig */,
+				EE97F6080AE013718391C725 /* Pods-sbhacks.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		49D7BA66B25B505491C9E642 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				AA72F70AA5F3B5183C89392B /* Pods_sbhacks.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		75FEFF772013514500DE97A2 = {
 			isa = PBXGroup;
 			children = (
 				75FEFF822013514500DE97A2 /* sbhacks */,
 				75FEFF812013514500DE97A2 /* Products */,
+				3B416DE236B2A308F9FA69E5 /* Pods */,
+				49D7BA66B25B505491C9E642 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -71,9 +95,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 75FEFF922013514600DE97A2 /* Build configuration list for PBXNativeTarget "sbhacks" */;
 			buildPhases = (
+				D85082FFF6EEF543EC398402 /* [CP] Check Pods Manifest.lock */,
 				75FEFF7C2013514500DE97A2 /* Sources */,
 				75FEFF7D2013514500DE97A2 /* Frameworks */,
 				75FEFF7E2013514500DE97A2 /* Resources */,
+				C553C195303643F39F1A48F0 /* [CP] Embed Pods Frameworks */,
+				732B5498345D67FCF31A410A /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -130,6 +157,66 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		732B5498345D67FCF31A410A /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-sbhacks/Pods-sbhacks-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C553C195303643F39F1A48F0 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-sbhacks/Pods-sbhacks-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-sbhacks/Pods-sbhacks-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D85082FFF6EEF543EC398402 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-sbhacks-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		75FEFF7C2013514500DE97A2 /* Sources */ = {
@@ -272,6 +359,7 @@
 		};
 		75FEFF932013514600DE97A2 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 41682FED37AA9747E7494245 /* Pods-sbhacks.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -287,6 +375,7 @@
 		};
 		75FEFF942013514600DE97A2 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = EE97F6080AE013718391C725 /* Pods-sbhacks.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
