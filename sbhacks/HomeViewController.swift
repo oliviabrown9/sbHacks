@@ -13,8 +13,6 @@ import Starscream
 
 class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
-    fileprivate var socketManager: WebSocketManager?
-    
     var databaseRef: DatabaseReference!
     let motionManager = CMMotionManager()
     
@@ -80,8 +78,6 @@ class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         databaseRef = Database.database().reference()
     }
     
-    
-    
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         if let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
             
@@ -142,7 +138,6 @@ extension HomeViewController : WebSocketDelegate {
     }
     
     func websocketDidReceiveMessage(socket: WebSocketClient, text: String) {
-        //        let dataType = WebSocketManager.processJsonTextFromServer(text)
         guard let data = text.data(using: .utf16),
             let jsonData = try? JSONSerialization.jsonObject(with: data),
             let jsonDict = jsonData as? [String: Any],
