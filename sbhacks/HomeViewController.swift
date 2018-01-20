@@ -1,6 +1,6 @@
 //
-//  ViewController.swift
-//  sbhacks
+//  HomeViewController.swift
+//  sbHacks
 //
 //  Created by Olivia Brown on 1/20/18.
 //  Copyright © 2018 Olivia Brown. All rights reserved.
@@ -23,7 +23,6 @@ class HomeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
     }
 }
 
@@ -45,7 +44,7 @@ extension HomeViewController : UIImagePickerControllerDelegate, UINavigationCont
                 data = UIImageJPEGRepresentation(pickedImage, 0.8)! // compression quality
                 
                 // upload path
-                let filePath = "\(user!.uid)/\("userPhoto")"
+                let filePath = "\(user!.uid)/\("photo")"
                 let metaData = StorageMetadata()
                 metaData.contentType = "image/jpg"
                 storageRef.child(filePath).putData(data, metadata: metaData){(metaData,error) in
@@ -63,6 +62,4 @@ extension HomeViewController : UIImagePickerControllerDelegate, UINavigationCont
         }
         picker.dismiss(animated: true, completion: nil)
     }
-    
 }
-
