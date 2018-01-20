@@ -9,9 +9,7 @@
 import UIKit
 import Firebase
 
-class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-    
-    var databaseRef: DatabaseReference!
+class HomeViewController: UIViewController {
     
     @IBAction func takePhoto(_ sender: AnyObject) {
         if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.camera) {
@@ -23,9 +21,17 @@ class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         }
     }
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+    }
+}
+
+extension HomeViewController : UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         if let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
-            
+            var databaseRef: DatabaseReference!
             databaseRef = Database.database().reference()
             let storage = Storage.storage()
             let storageRef = storage.reference()
@@ -50,7 +56,7 @@ class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
                     else {
                         // store downloadURL in database
                         let downloadURL = metaData!.downloadURL()!.absoluteString
-                        self.databaseRef.child("Users").child(user!.uid).updateChildValues(["photo": downloadURL])
+                        databaseRef.child("Users").child(user!.uid).updateChildValues(["photo": downloadURL])
                     }
                 }
             }
@@ -58,9 +64,5 @@ class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         picker.dismiss(animated: true, completion: nil)
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-    }
 }
 
