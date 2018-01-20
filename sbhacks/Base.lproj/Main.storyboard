@@ -150,5 +150,20 @@
             </objects>
             <point key="canvasLocation" x="136.80000000000001" y="35.467980295566505"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="JeV-fk-2vp">
+            <objects>
+                <viewController id="jcN-1R-3nb" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="PXy-8x-xIY">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="pZN-5t-d6v"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6q8-dc-INs" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="812" y="35"/>
+        </scene>
     </scenes>
 </document>

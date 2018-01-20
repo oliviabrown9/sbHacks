@@ -61,12 +61,31 @@ class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         buttonE.layer.cornerRadius = 12
         buttonF.layer.cornerRadius = 12
         buttonG.layer.cornerRadius = 12
+        
+    }
+    
+    private func setupListener() {
+        
+        databaseRef.child("Users").child("inProgress").observe(.value, with: { (snapshot) in
+            let value = snapshot.value as? NSDictionary
+            let type = value?["inProgress"] as? String
+            var textToDisplay: String?
+            
+            if type == "image" {
+            }
+                
+            else if type == "string" {
 
+            }
+            else if type == "" {
+                
+            }
+        })
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        setupListener()
         styleButtons()
         motionManager.gyroUpdateInterval = 1.0/60.0
         motionManager.startGyroUpdates()
@@ -118,7 +137,7 @@ extension UIView {
         gradient.frame = self.bounds
         gradient.colors = colors.map { $0.cgColor }
         gradient.locations = locations
-
+        
         self.layer.insertSublayer(gradient, at: 0)
         self.layer.masksToBounds = true
         gradient.cornerRadius = 12
