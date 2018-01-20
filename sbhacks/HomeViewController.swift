@@ -15,6 +15,12 @@ class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     var databaseRef: DatabaseReference!
     let motionManager = CMMotionManager()
     
+    @IBAction func clipboardButtonPressed(_ sender: Any) {
+        let pasteboardString: String? = UIPasteboard.general.string
+        if let myString = pasteboardString {
+            databaseRef.child("Users").updateChildValues(["clipboardText": myString])
+        }
+    }
     @IBAction func gyroButtonPressed(_ sender: Any) {
         if let gyroData = motionManager.gyroData {
             let gyroX = gyroData.rotationRate.x
@@ -38,10 +44,6 @@ class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         motionManager.gyroUpdateInterval = 1.0/60.0
         motionManager.startGyroUpdates()
         databaseRef = Database.database().reference()
-        let pasteboardString: String? = UIPasteboard.general.string
-        if let myString = pasteboardString {
-            databaseRef.child("Users").updateChildValues(["pasteboardString": myString])
-        }
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
