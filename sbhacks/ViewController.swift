@@ -23,9 +23,10 @@ class ViewController: UIViewController {
         
         let image: UIImage?
         
-        
+        image = #imageLiteral(resourceName: "sample")
         
         Auth.auth().signInAnonymously() { (user, error) in
+            if error != nil { print(error); return }
             var data = Data()
             data = UIImageJPEGRepresentation(image!, 0.8)!
             // set upload path
