@@ -11,12 +11,13 @@ import Firebase
 
 class ViewController: UIViewController {
     
-    var ref: DatabaseReference!
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        ref = Database.database().reference()
+        let databaseRef: DatabaseReference! = Database.database().reference()
+        
+        let storage = Storage.storage()
+        let storageRef = storage.reference()
         
         // take photo
         
@@ -29,9 +30,9 @@ class ViewController: UIViewController {
             data = UIImageJPEGRepresentation(image!, 0.8)!
             // set upload path
             let filePath = "\(user!.uid)/\("userPhoto")"
-            let metaData = FIRStorageMetadata()
+            let metaData = StorageMetadata()
             metaData.contentType = "image/jpg"
-            self.storageRef.child(filePath).putData(data, metadata: metaData){(metaData,error) in
+            storageRef.child(filePath).putData(data, metadata: metaData){(metaData,error) in
                 if let error = error {
                     print(error.localizedDescription)
                     return
@@ -40,7 +41,7 @@ class ViewController: UIViewController {
                     //store downloadURL
                     let downloadURL = metaData!.downloadURL()!.absoluteString
                     //store downloadURL at database
-                    self.databaseRef.child("Users").child(user!.uid).updateChildValues(["photo": downloadURL])
+                    databaseRef.child("Users").child(user!.uid).updateChildValues(["photo": downloadURL])
                 }
             }
         }
