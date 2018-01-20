@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
-    <device id="retina4_7" orientation="portrait">
+    <device id="retina5_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -9,51 +9,123 @@
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="Avenir.ttc">
+            <string>Avenir-Medium</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--Home View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="HomeViewController" customModule="sbhacks" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <view key="view" contentMode="scaleToFill" id="vvS-XT-Kdo">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wF6-20-2k1">
-                                <rect key="frame" x="149" y="318" width="76" height="30"/>
-                                <state key="normal" title="Take Photo"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ogZ-OY-Cc3">
+                                <rect key="frame" x="25" y="104" width="325" height="80"/>
+                                <color key="backgroundColor" red="0.6378111684793033" green="1" blue="0.85290761271931392" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="80" id="YAq-eX-jgz"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="24"/>
+                                <state key="normal" title="Log Clipboard Text">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                </state>
                                 <connections>
-                                    <action selector="takePhoto:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Rof-xq-ouV"/>
+                                    <action selector="clipboardButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ypH-yl-gsH"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vlW-Rh-iZ2">
-                                <rect key="frame" x="150" y="418" width="75" height="30"/>
-                                <state key="normal" title="Gyroscope"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xZO-hv-eTc">
+                                <rect key="frame" x="25" y="214" width="325" height="80"/>
+                                <color key="backgroundColor" red="0.61151135325345951" green="0.89663601837705631" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="80" id="bC0-G3-SJ2"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="24"/>
+                                <state key="normal" title="Log Photo">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                </state>
                                 <connections>
-                                    <action selector="gyroButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="wkN-T2-Nqo"/>
+                                    <action selector="takePhoto:" destination="BYZ-38-t0r" eventType="touchUpInside" id="vUa-xS-JlN"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OxA-Cf-xQY">
-                                <rect key="frame" x="116" y="218" width="142" height="30"/>
-                                <state key="normal" title="Paste Clipboard Text"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Dm-EG-ciK">
+                                <rect key="frame" x="25" y="324" width="325" height="80"/>
+                                <color key="backgroundColor" red="1" green="0.65964796237586787" blue="0.38315292267596712" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="80" id="GZ7-HQ-RnE"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="24"/>
+                                <state key="normal" title="Log Gyroscope Data">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                </state>
                                 <connections>
-                                    <action selector="clipboardButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="WQ2-g7-siL"/>
+                                    <action selector="gyroButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="32b-bn-0RL"/>
                                 </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jvu-mZ-SzH">
+                                <rect key="frame" x="25" y="434" width="325" height="80"/>
+                                <color key="backgroundColor" red="1" green="0.41827748236869977" blue="0.44527716207642631" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="80" id="KYI-hs-wtx"/>
+                                </constraints>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NkP-wq-iPe">
+                                <rect key="frame" x="25" y="544" width="325" height="80"/>
+                                <color key="backgroundColor" red="0.55062562143492277" green="0.46123609242371011" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="80" id="XYN-fN-R44"/>
+                                </constraints>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BHc-Qj-v7G">
+                                <rect key="frame" x="25" y="654" width="325" height="80"/>
+                                <color key="backgroundColor" red="1" green="0.69327632311636256" blue="0.63581897041865942" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="80" id="uqA-aF-f02"/>
+                                </constraints>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="wF6-20-2k1" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="PWi-li-tel"/>
-                            <constraint firstItem="vlW-Rh-iZ2" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Sop-y3-IZh"/>
-                            <constraint firstItem="vlW-Rh-iZ2" firstAttribute="top" secondItem="wF6-20-2k1" secondAttribute="bottom" constant="70" id="YYp-iX-wft"/>
-                            <constraint firstItem="OxA-Cf-xQY" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="lIe-h2-53A"/>
-                            <constraint firstItem="wF6-20-2k1" firstAttribute="top" secondItem="OxA-Cf-xQY" secondAttribute="bottom" constant="70" id="ofo-uC-c1b"/>
-                            <constraint firstItem="wF6-20-2k1" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="pf6-g0-nOi"/>
+                            <constraint firstItem="S7a-oX-UHP" firstAttribute="trailing" secondItem="xZO-hv-eTc" secondAttribute="trailing" constant="25" id="1AD-qC-XfT"/>
+                            <constraint firstItem="ogZ-OY-Cc3" firstAttribute="top" secondItem="S7a-oX-UHP" secondAttribute="top" constant="60" id="JMv-3P-Xhj"/>
+                            <constraint firstItem="NkP-wq-iPe" firstAttribute="top" secondItem="jvu-mZ-SzH" secondAttribute="bottom" constant="30" id="LlZ-yz-KPl"/>
+                            <constraint firstItem="S7a-oX-UHP" firstAttribute="trailing" secondItem="ogZ-OY-Cc3" secondAttribute="trailing" constant="25" id="RKr-HA-7J1"/>
+                            <constraint firstItem="NkP-wq-iPe" firstAttribute="leading" secondItem="S7a-oX-UHP" secondAttribute="leading" constant="25" id="S60-kZ-E3t"/>
+                            <constraint firstItem="xZO-hv-eTc" firstAttribute="top" secondItem="ogZ-OY-Cc3" secondAttribute="bottom" constant="30" id="aBb-qW-h7w"/>
+                            <constraint firstItem="0Dm-EG-ciK" firstAttribute="leading" secondItem="S7a-oX-UHP" secondAttribute="leading" constant="25" id="dUW-vF-O2g"/>
+                            <constraint firstItem="jvu-mZ-SzH" firstAttribute="top" secondItem="0Dm-EG-ciK" secondAttribute="bottom" constant="30" id="eeU-bb-vcH"/>
+                            <constraint firstItem="S7a-oX-UHP" firstAttribute="trailing" secondItem="BHc-Qj-v7G" secondAttribute="trailing" constant="25" id="f9r-uv-vJf"/>
+                            <constraint firstItem="xZO-hv-eTc" firstAttribute="leading" secondItem="S7a-oX-UHP" secondAttribute="leading" constant="25" id="jaD-dY-Lc6"/>
+                            <constraint firstItem="BHc-Qj-v7G" firstAttribute="leading" secondItem="S7a-oX-UHP" secondAttribute="leading" constant="25" id="k3O-nY-Feq"/>
+                            <constraint firstItem="0Dm-EG-ciK" firstAttribute="top" secondItem="xZO-hv-eTc" secondAttribute="bottom" constant="30" id="lng-CE-AFZ"/>
+                            <constraint firstItem="S7a-oX-UHP" firstAttribute="trailing" secondItem="jvu-mZ-SzH" secondAttribute="trailing" constant="25" id="qiL-yr-uaI"/>
+                            <constraint firstItem="ogZ-OY-Cc3" firstAttribute="leading" secondItem="S7a-oX-UHP" secondAttribute="leading" constant="25" id="sXz-Sk-dJ5"/>
+                            <constraint firstItem="S7a-oX-UHP" firstAttribute="trailing" secondItem="ogZ-OY-Cc3" secondAttribute="trailing" constant="25" id="tXl-n7-pKI"/>
+                            <constraint firstItem="S7a-oX-UHP" firstAttribute="trailing" secondItem="NkP-wq-iPe" secondAttribute="trailing" constant="25" id="tkj-im-7RP"/>
+                            <constraint firstItem="ogZ-OY-Cc3" firstAttribute="leading" secondItem="S7a-oX-UHP" secondAttribute="leading" constant="25" id="tq3-j8-CoO"/>
+                            <constraint firstItem="S7a-oX-UHP" firstAttribute="trailing" secondItem="0Dm-EG-ciK" secondAttribute="trailing" constant="25" id="uWU-iD-2H0"/>
+                            <constraint firstItem="BHc-Qj-v7G" firstAttribute="top" secondItem="NkP-wq-iPe" secondAttribute="bottom" constant="30" id="xEZ-GA-4iz"/>
+                            <constraint firstItem="ogZ-OY-Cc3" firstAttribute="centerX" secondItem="vvS-XT-Kdo" secondAttribute="centerX" id="xn3-8U-QRn"/>
+                            <constraint firstItem="jvu-mZ-SzH" firstAttribute="leading" secondItem="S7a-oX-UHP" secondAttribute="leading" constant="25" id="xxr-vf-Cd0"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <viewLayoutGuide key="safeArea" id="S7a-oX-UHP"/>
                     </view>
+                    <connections>
+                        <outlet property="buttonA" destination="ogZ-OY-Cc3" id="jRR-mM-1xx"/>
+                        <outlet property="buttonB" destination="xZO-hv-eTc" id="WpQ-wS-gpD"/>
+                        <outlet property="buttonC" destination="0Dm-EG-ciK" id="dGs-rj-B42"/>
+                        <outlet property="buttonD" destination="jvu-mZ-SzH" id="5U5-ib-IIx"/>
+                        <outlet property="buttonE" destination="NkP-wq-iPe" id="tpA-pD-n7Z"/>
+                        <outlet property="buttonF" destination="BHc-Qj-v7G" id="922-H8-4sD"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="136.80000000000001" y="35.467980295566505"/>
         </scene>
     </scenes>
 </document>

@@ -15,6 +15,15 @@ class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     var databaseRef: DatabaseReference!
     let motionManager = CMMotionManager()
     
+    // Button IBOutlets
+    @IBOutlet weak var buttonA: UIButton!
+    @IBOutlet weak var buttonB: UIButton!
+    @IBOutlet weak var buttonC: UIButton!
+    @IBOutlet weak var buttonD: UIButton!
+    @IBOutlet weak var buttonE: UIButton!
+    @IBOutlet weak var buttonF: UIButton!
+    
+    
     @IBAction func clipboardButtonPressed(_ sender: Any) {
         let pasteboardString: String? = UIPasteboard.general.string
         if let myString = pasteboardString {
@@ -78,5 +87,19 @@ class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
             }
         }
         picker.dismiss(animated: true, completion: nil)
+    }
+}
+
+extension UIView {
+    func applyGradient(colors: [UIColor]) -> Void {
+        self.applyGradient(colors: colors, locations: nil)
+    }
+    
+    func applyGradient(colors: [UIColor], locations: [NSNumber]?) -> Void {
+        let gradient: CAGradientLayer = CAGradientLayer()
+        gradient.frame = self.bounds
+        gradient.colors = colors.map { $0.cgColor }
+        gradient.locations = locations
+        self.layer.insertSublayer(gradient, at: 0)
     }
 }
