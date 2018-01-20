@@ -13,11 +13,6 @@ class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     
     var databaseRef: DatabaseReference!
     
-    
-    
-    
-    @IBOutlet weak var myImageView: UIImageView!
-    
     @IBAction func takePhoto(_ sender: AnyObject) {
         if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.camera) {
             let imagePicker = UIImagePickerController()
@@ -30,8 +25,6 @@ class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         if let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
-            myImageView.contentMode = .scaleToFill
-            myImageView.image = pickedImage
             
             databaseRef = Database.database().reference()
             let storage = Storage.storage()

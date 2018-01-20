@@ -18,9 +18,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ELl-la-oeU">
-                                <rect key="frame" x="67" y="67" width="240" height="128"/>
-                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wF6-20-2k1">
                                 <rect key="frame" x="149" y="318" width="76" height="30"/>
                                 <state key="normal" title="Take Photo"/>
@@ -32,15 +29,10 @@
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="wF6-20-2k1" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="PWi-li-tel"/>
-                            <constraint firstItem="ELl-la-oeU" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Wk3-7D-Q7l"/>
-                            <constraint firstItem="ELl-la-oeU" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="47" id="cOb-ll-NIj"/>
                             <constraint firstItem="wF6-20-2k1" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="pf6-g0-nOi"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <connections>
-                        <outlet property="myImageView" destination="ELl-la-oeU" id="KNN-Lb-6PJ"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
