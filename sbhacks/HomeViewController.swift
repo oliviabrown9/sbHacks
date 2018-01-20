@@ -44,7 +44,7 @@ class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
                     return
                 }
                 var data = Data()
-                data = UIImageJPEGRepresentation(pickedImage, 0.8)! // compression quality
+                data = UIImageJPEGRepresentation(pickedImage, 0.5)! // compression quality
                 
                 // upload path
                 let filePath = "\("photo")"
