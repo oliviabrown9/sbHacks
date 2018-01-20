@@ -9,7 +9,6 @@
 import UIKit
 import Firebase
 import CoreMotion
-import Starscream
 
 class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
@@ -68,10 +67,6 @@ class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let socket = WebSocket(url: URL(string: "https://google.com")!)
-        socket.delegate = self
-        socket.connect()
-        
         styleButtons()
         motionManager.gyroUpdateInterval = 1.0/60.0
         motionManager.startGyroUpdates()
@@ -129,31 +124,3 @@ extension UIView {
         gradient.cornerRadius = 12
     }
 }
-
-extension HomeViewController : WebSocketDelegate {
-    func websocketDidConnect(socket: WebSocketClient) {
-    }
-    
-    func websocketDidDisconnect(socket: WebSocketClient, error: Error?) {
-    }
-    
-    func websocketDidReceiveMessage(socket: WebSocketClient, text: String) {
-        guard let data = text.data(using: .utf16),
-            let jsonData = try? JSONSerialization.jsonObject(with: data),
-            let jsonDict = jsonData as? [String: Any],
-            let dataType = jsonDict["type"] as? String else {
-                return
-        }
-        if dataType == "string" {
-            performSegue(withIdentifier: "toStringScreen", sender: self)
-        }
-        else if dataType == "image" {
-            performSegue(withIdentifier: "toImageScreen", sender: self)
-        }
-    }
-    
-    func websocketDidReceiveData(socket: WebSocketClient, data: Data) {
-        return
-    }
-}
-
