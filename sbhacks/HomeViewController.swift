@@ -31,10 +31,14 @@ class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
             let storageRef = storage.reference()
             
             Auth.auth().signInAnonymously() { (user, error) in
-                if error != nil { print(error); return }
+                if error != nil {
+                    print(error as Any)
+                    return
+                }
                 var data = Data()
-                data = UIImageJPEGRepresentation(pickedImage, 0.8)!
-                // set upload path
+                data = UIImageJPEGRepresentation(pickedImage, 0.8)! // compression quality
+                
+                // upload path
                 let filePath = "\(user!.uid)/\("userPhoto")"
                 let metaData = StorageMetadata()
                 metaData.contentType = "image/jpg"
@@ -44,9 +48,8 @@ class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
                         return
                     }
                     else {
-                        //store downloadURL
+                        // store downloadURL in database
                         let downloadURL = metaData!.downloadURL()!.absoluteString
-                        //store downloadURL at database
                         self.databaseRef.child("Users").child(user!.uid).updateChildValues(["photo": downloadURL])
                     }
                 }
@@ -54,8 +57,6 @@ class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         }
         picker.dismiss(animated: true, completion: nil)
     }
-    
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
