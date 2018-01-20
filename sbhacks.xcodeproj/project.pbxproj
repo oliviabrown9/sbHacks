@@ -13,6 +13,7 @@
 		75FEFF892013514500DE97A2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75FEFF872013514500DE97A2 /* Main.storyboard */; };
 		75FEFF8B2013514500DE97A2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 75FEFF8A2013514500DE97A2 /* Assets.xcassets */; };
 		75FEFF8E2013514500DE97A2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75FEFF8C2013514500DE97A2 /* LaunchScreen.storyboard */; };
+		75FEFF96201354A700DE97A2 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 75FEFF95201354A700DE97A2 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		75FEFF8A2013514500DE97A2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		75FEFF8D2013514500DE97A2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		75FEFF8F2013514500DE97A2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		75FEFF95201354A700DE97A2 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		AA72F70AA5F3B5183C89392B /* Pods_sbhacks.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_sbhacks.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EE97F6080AE013718391C725 /* Pods-sbhacks.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-sbhacks.release.xcconfig"; path = "Pods/Target Support Files/Pods-sbhacks/Pods-sbhacks.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -83,6 +85,7 @@
 				75FEFF872013514500DE97A2 /* Main.storyboard */,
 				75FEFF8A2013514500DE97A2 /* Assets.xcassets */,
 				75FEFF8C2013514500DE97A2 /* LaunchScreen.storyboard */,
+				75FEFF95201354A700DE97A2 /* GoogleService-Info.plist */,
 				75FEFF8F2013514500DE97A2 /* Info.plist */,
 			);
 			path = sbhacks;
@@ -151,6 +154,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				75FEFF8E2013514500DE97A2 /* LaunchScreen.storyboard in Resources */,
+				75FEFF96201354A700DE97A2 /* GoogleService-Info.plist in Resources */,
 				75FEFF8B2013514500DE97A2 /* Assets.xcassets in Resources */,
 				75FEFF892013514500DE97A2 /* Main.storyboard in Resources */,
 			);
