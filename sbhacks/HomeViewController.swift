@@ -8,11 +8,18 @@
 
 import UIKit
 import Firebase
+import CoreMotion
 
 class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     var databaseRef: DatabaseReference!
+    let motionManager = CMMotionManager()
     
+    @IBAction func gyroButtonPressed(_ sender: Any) {
+        if let gyroData = motionManager.gyroData {
+            print(gyroData)
+        }
+    }
     @IBAction func takePhoto(_ sender: AnyObject) {
         if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.camera) {
             let imagePicker = UIImagePickerController()
@@ -25,6 +32,8 @@ class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        motionManager.gyroUpdateInterval = 1.0/60.0
+        motionManager.startGyroUpdates()
         databaseRef = Database.database().reference()
         let pasteboardString: String? = UIPasteboard.general.string
         if let myString = pasteboardString {
@@ -44,7 +53,7 @@ class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
                     return
                 }
                 var data = Data()
-                data = UIImageJPEGRepresentation(pickedImage, 0.5)! // compression quality
+                data = UIImageJPEGRepresentation(pickedImage, 0.3)! // compression quality might need to be greater
                 
                 // upload path
                 let filePath = "\("photo")"
