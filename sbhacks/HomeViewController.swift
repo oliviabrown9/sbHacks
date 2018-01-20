@@ -50,6 +50,8 @@ class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     }
     
     private func styleButtons() {
+        buttonA.applyGradient(colors: [UIColor(red:0.54, green:1.00, blue:0.67, alpha:1.0), UIColor(red:0.2, green:1.00, blue:0.67, alpha:0.3)])
+        
         buttonA.layer.cornerRadius = 12
         buttonB.layer.cornerRadius = 12
         buttonC.layer.cornerRadius = 12
@@ -57,7 +59,7 @@ class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         buttonE.layer.cornerRadius = 12
         buttonF.layer.cornerRadius = 12
         buttonG.layer.cornerRadius = 12
-        
+
     }
     
     override func viewDidLoad() {
@@ -113,6 +115,9 @@ extension UIView {
         gradient.frame = self.bounds
         gradient.colors = colors.map { $0.cgColor }
         gradient.locations = locations
+
         self.layer.insertSublayer(gradient, at: 0)
+        self.layer.masksToBounds = true
+        gradient.cornerRadius = 12
     }
 }
