@@ -22,6 +22,7 @@ class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     @IBOutlet weak var buttonD: UIButton!
     @IBOutlet weak var buttonE: UIButton!
     @IBOutlet weak var buttonF: UIButton!
+    @IBOutlet weak var buttonG: UIButton!
     
     
     @IBAction func clipboardButtonPressed(_ sender: Any) {
@@ -48,8 +49,20 @@ class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         }
     }
     
+    private func styleButtons() {
+        buttonA.layer.cornerRadius = 12
+        buttonB.layer.cornerRadius = 12
+        buttonC.layer.cornerRadius = 12
+        buttonD.layer.cornerRadius = 12
+        buttonE.layer.cornerRadius = 12
+        buttonF.layer.cornerRadius = 12
+        buttonG.layer.cornerRadius = 12
+        
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        styleButtons()
         motionManager.gyroUpdateInterval = 1.0/60.0
         motionManager.startGyroUpdates()
         databaseRef = Database.database().reference()
