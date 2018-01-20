@@ -17,7 +17,10 @@ class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     
     @IBAction func gyroButtonPressed(_ sender: Any) {
         if let gyroData = motionManager.gyroData {
-            print(gyroData)
+            let gyroX = gyroData.rotationRate.x
+            let gyroY = gyroData.rotationRate.y
+            let gyroZ = gyroData.rotationRate.z
+            self.databaseRef.child("Users").updateChildValues(["GyroX": gyroX, "GyroY": gyroY, "GyroZ": gyroZ])
         }
     }
     @IBAction func takePhoto(_ sender: AnyObject) {
