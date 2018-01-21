@@ -84,7 +84,7 @@ class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         
         databaseRef.child("State").observe(.childChanged, with: { (snapshot) in
             if snapshot.key == "done" {
-                if snapshot.value as! String == "true" {
+                if snapshot.value as! Bool == true {
                     self.databaseRef.child("State").observeSingleEvent(of: .value, with: { (snapshot) in
                         if let result = snapshot.children.allObjects as? [DataSnapshot] {
                             for child in result {
