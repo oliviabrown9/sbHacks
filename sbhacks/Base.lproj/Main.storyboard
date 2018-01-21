@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -45,10 +46,10 @@
                                 <rect key="frame" x="30" y="205" width="315" height="80"/>
                                 <color key="backgroundColor" red="0.44300481260212415" green="0.95958116319444442" blue="0.62047334558823541" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="80" id="YAq-eX-jgz"/>
+                                    <constraint firstAttribute="width" secondItem="ogZ-OY-Cc3" secondAttribute="height" multiplier="63:16" id="WKz-3q-Bne"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="24"/>
-                                <state key="normal" title="Log Clipboard">
+                                <state key="normal" title="Copy Clipboard">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -59,10 +60,10 @@
                                 <rect key="frame" x="30" y="303" width="315" height="80"/>
                                 <color key="backgroundColor" red="0.62344711714234835" green="0.87479899580761178" blue="0.98982747395833337" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="80" id="bC0-G3-SJ2"/>
+                                    <constraint firstAttribute="width" secondItem="xZO-hv-eTc" secondAttribute="height" multiplier="63:16" id="yuT-6B-wO6"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="24"/>
-                                <state key="normal" title="Log Photo">
+                                <state key="normal" title="Take Photo">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -73,10 +74,10 @@
                                 <rect key="frame" x="30" y="401" width="315" height="80"/>
                                 <color key="backgroundColor" red="1" green="0.65964796237586787" blue="0.38315292267596712" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="80" id="GZ7-HQ-RnE"/>
+                                    <constraint firstAttribute="width" secondItem="0Dm-EG-ciK" secondAttribute="height" multiplier="63:16" id="FmO-nZ-09o"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="24"/>
-                                <state key="normal" title="Log Gyroscope">
+                                <state key="normal" title="Record Gyroscope">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -87,10 +88,10 @@
                                 <rect key="frame" x="30" y="499" width="315" height="80"/>
                                 <color key="backgroundColor" red="1" green="0.41827748236869977" blue="0.44527716207642631" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="80" id="KYI-hs-wtx"/>
+                                    <constraint firstAttribute="width" secondItem="jvu-mZ-SzH" secondAttribute="height" multiplier="63:16" id="4p1-CI-ucp"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="24"/>
-                                <state key="normal" title="Log Accelerometer">
+                                <state key="normal" title="Measure Accelerometer">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
@@ -101,10 +102,10 @@
                                 <rect key="frame" x="30" y="597" width="315" height="80"/>
                                 <color key="backgroundColor" red="0.55062562143492277" green="0.46123609242371011" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="80" id="XYN-fN-R44"/>
+                                    <constraint firstAttribute="width" secondItem="NkP-wq-iPe" secondAttribute="height" multiplier="63:16" id="QlU-LU-SJN"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="24"/>
-                                <state key="normal" title="Log Location">
+                                <state key="normal" title="Send Location">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
@@ -115,7 +116,7 @@
                                 <rect key="frame" x="30" y="695" width="315" height="80"/>
                                 <color key="backgroundColor" red="0.36797188727449526" green="0.5679824081457665" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="80" id="uqA-aF-f02"/>
+                                    <constraint firstAttribute="width" secondItem="BHc-Qj-v7G" secondAttribute="height" multiplier="63:16" id="Hak-iy-MNb"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="24"/>
                                 <state key="normal" title="Log Pedometer">
@@ -184,7 +185,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Image" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a8o-8D-HIM">
-                                <rect key="frame" x="29.999999999999993" y="120" width="116.33333333333331" height="55"/>
+                                <rect key="frame" x="30.000000000000007" y="120" width="116.66666666666669" height="55"/>
                                 <fontDescription key="fontDescription" name="Avenir-Black" family="Avenir" pointSize="40"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -223,14 +224,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Summary" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s00-or-ukq">
-                                <rect key="frame" x="30" y="120.00000000000001" width="175.66666666666666" height="54.666666666666671"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Text" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s00-or-ukq">
+                                <rect key="frame" x="30" y="120" width="175.66666666666666" height="55"/>
                                 <fontDescription key="fontDescription" name="Avenir-Black" family="Avenir" pointSize="40"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Rei-2k-Txu">
-                                <rect key="frame" x="30" y="194.66666666666669" width="315" height="563.33333333333326"/>
+                                <rect key="frame" x="30" y="195" width="315" height="563"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                 <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="20"/>

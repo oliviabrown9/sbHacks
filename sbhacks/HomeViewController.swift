@@ -84,7 +84,7 @@ class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         
         databaseRef.child("State").observe(.childChanged, with: { (snapshot) in
             if snapshot.key == "done" {
-                if snapshot.value as! String == "true" {
+                if snapshot.value as! String == "yes" {
                     self.databaseRef.child("State").observeSingleEvent(of: .value, with: { (snapshot) in
                         if let result = snapshot.children.allObjects as? [DataSnapshot] {
                             for child in result {
@@ -97,6 +97,19 @@ class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
                                     else if self.keyName == "photo" {
                                         self.performSegue(withIdentifier: "toDisplayImage", sender: self)
                                     }
+                                    else if self.keyName == "link" {
+                                        self.databaseRef.child("Users").observeSingleEvent(of: .value, with: { (snapshot) in
+                                            if let result = snapshot.children.allObjects as? [DataSnapshot] {
+                                                for child in result {
+                                                    if child.key == self.keyName! {
+                                                        if let url = URL.init(string: child.value as! String) {
+                                                            UIApplication.shared.open(url, options: [:])
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    )}
                                 }
                             }
                         }
