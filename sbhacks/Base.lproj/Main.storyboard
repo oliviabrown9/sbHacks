@@ -11,6 +11,7 @@
     </dependencies>
     <customFonts key="customFonts">
         <array key="Avenir.ttc">
+            <string>Avenir-Black</string>
             <string>Avenir-Medium</string>
         </array>
     </customFonts>
@@ -105,12 +106,20 @@
                                     <constraint firstAttribute="height" constant="80" id="jiC-pa-G7d"/>
                                 </constraints>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZOj-6O-ZKa">
+                                <rect key="frame" x="329" y="44" width="30" height="30"/>
+                                <state key="normal" title="test"/>
+                                <connections>
+                                    <action selector="testButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="1u5-UB-RfQ"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="S7a-oX-UHP" firstAttribute="trailing" secondItem="xZO-hv-eTc" secondAttribute="trailing" constant="15" id="1AD-qC-XfT"/>
                             <constraint firstItem="ogZ-OY-Cc3" firstAttribute="top" secondItem="S7a-oX-UHP" secondAttribute="top" constant="60" id="JMv-3P-Xhj"/>
+                            <constraint firstItem="ZOj-6O-ZKa" firstAttribute="top" secondItem="S7a-oX-UHP" secondAttribute="top" id="K76-Bf-wYw"/>
                             <constraint firstItem="NkP-wq-iPe" firstAttribute="top" secondItem="jvu-mZ-SzH" secondAttribute="bottom" constant="15" id="LlZ-yz-KPl"/>
                             <constraint firstItem="S7a-oX-UHP" firstAttribute="trailing" secondItem="ogZ-OY-Cc3" secondAttribute="trailing" constant="15" id="RKr-HA-7J1"/>
                             <constraint firstItem="NkP-wq-iPe" firstAttribute="leading" secondItem="S7a-oX-UHP" secondAttribute="leading" constant="15" id="S60-kZ-E3t"/>
@@ -119,6 +128,7 @@
                             <constraint firstItem="jvu-mZ-SzH" firstAttribute="top" secondItem="0Dm-EG-ciK" secondAttribute="bottom" constant="15" id="eeU-bb-vcH"/>
                             <constraint firstItem="S7a-oX-UHP" firstAttribute="trailing" secondItem="BHc-Qj-v7G" secondAttribute="trailing" constant="15" id="f9r-uv-vJf"/>
                             <constraint firstItem="Pcf-cQ-0OQ" firstAttribute="leading" secondItem="S7a-oX-UHP" secondAttribute="leading" constant="15" id="fJU-Ek-nka"/>
+                            <constraint firstItem="S7a-oX-UHP" firstAttribute="trailing" secondItem="ZOj-6O-ZKa" secondAttribute="trailing" constant="16" id="g8b-fx-7BU"/>
                             <constraint firstItem="xZO-hv-eTc" firstAttribute="leading" secondItem="S7a-oX-UHP" secondAttribute="leading" constant="15" id="jaD-dY-Lc6"/>
                             <constraint firstItem="BHc-Qj-v7G" firstAttribute="leading" secondItem="S7a-oX-UHP" secondAttribute="leading" constant="15" id="k3O-nY-Feq"/>
                             <constraint firstItem="Pcf-cQ-0OQ" firstAttribute="top" secondItem="BHc-Qj-v7G" secondAttribute="bottom" constant="15" id="kvX-LQ-lab"/>
@@ -144,26 +154,91 @@
                         <outlet property="buttonE" destination="NkP-wq-iPe" id="tpA-pD-n7Z"/>
                         <outlet property="buttonF" destination="BHc-Qj-v7G" id="922-H8-4sD"/>
                         <outlet property="buttonG" destination="Pcf-cQ-0OQ" id="BWR-ET-MZk"/>
+                        <segue destination="jcN-1R-3nb" kind="show" identifier="toDisplayText" id="RIc-Ae-7Hx"/>
+                        <segue destination="T8g-CB-bO4" kind="show" identifier="toDisplayImage" id="gmf-N2-WH1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="136.80000000000001" y="35.467980295566505"/>
         </scene>
-        <!--View Controller-->
+        <!--Display Image View Controller-->
+        <scene sceneID="vVs-yp-XyZ">
+            <objects>
+                <viewController id="T8g-CB-bO4" customClass="DisplayImageViewController" customModule="sbhacks" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="UJm-Ax-t5C">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Image" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a8o-8D-HIM">
+                                <rect key="frame" x="29.999999999999993" y="76" width="116.33333333333331" height="55"/>
+                                <fontDescription key="fontDescription" name="Avenir-Black" family="Avenir" pointSize="40"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="WQv-nA-q8L">
+                                <rect key="frame" x="30" y="161" width="315" height="537"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="a8o-8D-HIM" firstAttribute="top" secondItem="A3q-zX-F4m" secondAttribute="top" constant="32" id="CTZ-fV-60y"/>
+                            <constraint firstItem="a8o-8D-HIM" firstAttribute="leading" secondItem="A3q-zX-F4m" secondAttribute="leading" constant="30" id="KJR-vE-7Qt"/>
+                            <constraint firstItem="WQv-nA-q8L" firstAttribute="leading" secondItem="A3q-zX-F4m" secondAttribute="leading" constant="30" id="RA7-Xg-sxZ"/>
+                            <constraint firstItem="A3q-zX-F4m" firstAttribute="trailing" secondItem="WQv-nA-q8L" secondAttribute="trailing" constant="30" id="SrT-i5-9Mq"/>
+                            <constraint firstItem="WQv-nA-q8L" firstAttribute="top" secondItem="a8o-8D-HIM" secondAttribute="bottom" constant="30" id="hW3-79-45M"/>
+                            <constraint firstItem="A3q-zX-F4m" firstAttribute="bottom" secondItem="WQv-nA-q8L" secondAttribute="bottom" constant="80" id="qmW-bS-2Xo"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="A3q-zX-F4m"/>
+                    </view>
+                    <connections>
+                        <outlet property="displayImageView" destination="WQv-nA-q8L" id="wZg-wl-Xwz"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pp0-g1-WnU" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="932" y="210.59113300492612"/>
+        </scene>
+        <!--Display Text View Controller-->
         <scene sceneID="JeV-fk-2vp">
             <objects>
-                <viewController id="jcN-1R-3nb" sceneMemberID="viewController">
+                <viewController id="jcN-1R-3nb" customClass="DisplayTextViewController" customModule="sbhacks" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="PXy-8x-xIY">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Summary" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s00-or-ukq">
+                                <rect key="frame" x="30" y="76" width="175.66666666666666" height="54.666666666666657"/>
+                                <fontDescription key="fontDescription" name="Avenir-Black" family="Avenir" pointSize="40"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aCA-1z-6o3">
+                                <rect key="frame" x="30" y="150.66666666666669" width="315" height="577.33333333333326"/>
+                                <string key="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</string>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="pZN-5t-d6v" firstAttribute="trailing" secondItem="aCA-1z-6o3" secondAttribute="trailing" constant="30" id="Ahe-QT-Nwm"/>
+                            <constraint firstItem="aCA-1z-6o3" firstAttribute="top" secondItem="s00-or-ukq" secondAttribute="bottom" constant="20" id="F1y-7S-Vib"/>
+                            <constraint firstItem="aCA-1z-6o3" firstAttribute="leading" secondItem="pZN-5t-d6v" secondAttribute="leading" constant="30" id="Q9o-9v-Saw"/>
+                            <constraint firstItem="s00-or-ukq" firstAttribute="top" secondItem="pZN-5t-d6v" secondAttribute="top" constant="32" id="RgC-8S-Msc"/>
+                            <constraint firstItem="pZN-5t-d6v" firstAttribute="bottom" secondItem="aCA-1z-6o3" secondAttribute="bottom" constant="50" id="fHX-xg-Xp4"/>
+                            <constraint firstItem="s00-or-ukq" firstAttribute="leading" secondItem="pZN-5t-d6v" secondAttribute="leading" constant="30" id="rYl-yl-29E"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="pZN-5t-d6v"/>
                     </view>
+                    <connections>
+                        <outlet property="displayTextField" destination="aCA-1z-6o3" id="zDn-Me-kFT"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6q8-dc-INs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="812" y="35"/>
+            <point key="canvasLocation" x="932" y="-457"/>
         </scene>
     </scenes>
 </document>

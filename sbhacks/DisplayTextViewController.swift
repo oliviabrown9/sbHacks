@@ -14,8 +14,11 @@ class DisplayTextViewController: UIViewController {
     var databaseRef: DatabaseReference!
     var textToDisplay : String?
 
+    @IBOutlet weak var displayTextField: UITextField!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        displayTextField.isUserInteractionEnabled = false
         
         databaseRef = Database.database().reference()
         databaseRef.child("Users").child("clipboardString").observeSingleEvent(of: .value, with: { (snapshot) in
@@ -24,6 +27,8 @@ class DisplayTextViewController: UIViewController {
                     let key = child.key ;
                     if (key.contains("clipboardString")) {
                         self.textToDisplay = child.value as! String;
+                        self.displayTextField.text = self.textToDisplay
+                        
                     }
                 }
             }

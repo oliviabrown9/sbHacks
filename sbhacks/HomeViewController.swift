@@ -15,6 +15,9 @@ class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     var databaseRef: DatabaseReference!
     let motionManager = CMMotionManager()
     
+    @IBAction func testButton(_ sender: Any) {
+        performSegue(withIdentifier: "toDisplayText", sender: self)
+    }
     // Button IBOutlets
     @IBOutlet weak var buttonA: UIButton!
     @IBOutlet weak var buttonB: UIButton!
@@ -66,30 +69,26 @@ class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     
     private func setupListener() {
         
-        databaseRef.child("Users").child("inProgress").observe(.value, with: { (snapshot) in
-            let value = snapshot.value as? NSDictionary
-            let type = value?["inProgress"] as? String
-            var textToDisplay: String?
+        databaseRef.child("State").observe(.childChanged, with: { (snapshot) in
+            let type: String = snapshot.value as! String
             
             if type == "image" {
+                self.performSegue(withIdentifier: "toDisplayImage", sender: self)
             }
-                
-            else if type == "string" {
 
-            }
-            else if type == "" {
-                
+            else if type == "string" {
+                self.performSegue(withIdentifier: "toDisplayText", sender: self)
             }
         })
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupListener()
         styleButtons()
         motionManager.gyroUpdateInterval = 1.0/60.0
         motionManager.startGyroUpdates()
         databaseRef = Database.database().reference()
+        setupListener()
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
