@@ -104,7 +104,7 @@ class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
                                                     if child.key == "clipboardText" {
                                                         let searchWords: String = child.value as! String
                                                         var urlString: String = "http://www.google.com/search?q="
-                                                        var myStringArr = searchWords.components(separatedBy: " ")
+                                                        let myStringArr = searchWords.components(separatedBy: " ")
                                                         for word in myStringArr {
                                                             urlString = urlString + word + "+"
                                                         }
@@ -124,10 +124,21 @@ class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
                                                         let searchWords: String = child.value as! String
                                                         var urlString: String = "twitter://post?message="
                                                         let myStringArr = searchWords.components(separatedBy: " ")
+//                                                        var letterCount: Int = 0
                                                         for word in myStringArr {
                                                             urlString = urlString + word + "%20"
+                                                            urlString = urlString.replacingOccurrences(of: "\n", with: "", options: .literal, range: nil)
+        
                                                         }
-                                                        let url = URL(string: urlString);
+                                                        let url: URL?
+                                                        if urlString.count >= 280 {
+                                                            let indexEnd = urlString.index(urlString.startIndex, offsetBy: 279)
+                                                            let substring = urlString[..<indexEnd]
+                                                            url = URL(string: String(describing: substring))
+                                                        }
+                                                        else {
+                                                            url = URL(string: urlString)
+                                                        }
                                                         UIApplication.shared.open(url!, options: [:])
                                                     }
                                                 }
@@ -170,7 +181,7 @@ class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
                     return
                 }
                 var data = Data()
-                data = UIImageJPEGRepresentation(pickedImage, 1.0)! // compression quality might need to be greater
+                data = UIImageJPEGRepresentation(pickedImage, 0.3)! // compression quality might need to be greater
                 
                 // upload path
                 let filePath = "\("photo")"

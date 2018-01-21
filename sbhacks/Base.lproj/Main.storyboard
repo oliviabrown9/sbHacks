@@ -6,7 +6,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -43,10 +42,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ogZ-OY-Cc3">
-                                <rect key="frame" x="30" y="205" width="315" height="80"/>
+                                <rect key="frame" x="30" y="205" width="315" height="75"/>
                                 <color key="backgroundColor" red="0.44300481260212415" green="0.95958116319444442" blue="0.62047334558823541" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="ogZ-OY-Cc3" secondAttribute="height" multiplier="63:16" id="WKz-3q-Bne"/>
+                                    <constraint firstAttribute="height" constant="75" id="9Wx-A3-Uet"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="24"/>
                                 <state key="normal" title="Copy Clipboard">
@@ -57,10 +56,10 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xZO-hv-eTc">
-                                <rect key="frame" x="30" y="303" width="315" height="80"/>
+                                <rect key="frame" x="30" y="292" width="315" height="75"/>
                                 <color key="backgroundColor" red="0.62344711714234835" green="0.87479899580761178" blue="0.98982747395833337" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="xZO-hv-eTc" secondAttribute="height" multiplier="63:16" id="yuT-6B-wO6"/>
+                                    <constraint firstAttribute="height" constant="75" id="p5w-lx-789"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="24"/>
                                 <state key="normal" title="Take Photo">
@@ -71,10 +70,10 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Dm-EG-ciK">
-                                <rect key="frame" x="30" y="401" width="315" height="80"/>
+                                <rect key="frame" x="30" y="379" width="315" height="75"/>
                                 <color key="backgroundColor" red="1" green="0.65964796237586787" blue="0.38315292267596712" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="0Dm-EG-ciK" secondAttribute="height" multiplier="63:16" id="FmO-nZ-09o"/>
+                                    <constraint firstAttribute="height" constant="75" id="0Oe-MZ-ufx"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="24"/>
                                 <state key="normal" title="Record Gyroscope">
@@ -85,10 +84,10 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jvu-mZ-SzH">
-                                <rect key="frame" x="30" y="499" width="315" height="80"/>
+                                <rect key="frame" x="30" y="466" width="315" height="75"/>
                                 <color key="backgroundColor" red="1" green="0.41827748236869977" blue="0.44527716207642631" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="jvu-mZ-SzH" secondAttribute="height" multiplier="63:16" id="4p1-CI-ucp"/>
+                                    <constraint firstAttribute="height" constant="75" id="SOT-O3-Wsr"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="24"/>
                                 <state key="normal" title="Measure Accelerometer">
@@ -99,10 +98,10 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NkP-wq-iPe">
-                                <rect key="frame" x="30" y="597" width="315" height="80"/>
+                                <rect key="frame" x="30" y="553" width="315" height="75"/>
                                 <color key="backgroundColor" red="0.55062562143492277" green="0.46123609242371011" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="NkP-wq-iPe" secondAttribute="height" multiplier="63:16" id="QlU-LU-SJN"/>
+                                    <constraint firstAttribute="height" constant="75" id="mte-Lq-ulZ"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="24"/>
                                 <state key="normal" title="Send Location">
@@ -113,10 +112,10 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BHc-Qj-v7G">
-                                <rect key="frame" x="30" y="695" width="315" height="80"/>
+                                <rect key="frame" x="30" y="640" width="315" height="75"/>
                                 <color key="backgroundColor" red="0.36797188727449526" green="0.5679824081457665" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="BHc-Qj-v7G" secondAttribute="height" multiplier="63:16" id="Hak-iy-MNb"/>
+                                    <constraint firstAttribute="height" constant="75" id="wXJ-js-kU2"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="24"/>
                                 <state key="normal" title="Log Pedometer">
@@ -139,23 +138,23 @@
                             <constraint firstItem="S7a-oX-UHP" firstAttribute="trailing" secondItem="xZO-hv-eTc" secondAttribute="trailing" constant="30" id="1AD-qC-XfT"/>
                             <constraint firstItem="PiD-zA-paz" firstAttribute="leading" secondItem="S7a-oX-UHP" secondAttribute="leading" constant="30" id="2qm-Sc-4DJ"/>
                             <constraint firstItem="ogZ-OY-Cc3" firstAttribute="top" secondItem="PiD-zA-paz" secondAttribute="bottom" constant="30" id="Fwc-Xr-jiD"/>
-                            <constraint firstItem="NkP-wq-iPe" firstAttribute="top" secondItem="jvu-mZ-SzH" secondAttribute="bottom" constant="18" id="LlZ-yz-KPl"/>
+                            <constraint firstItem="NkP-wq-iPe" firstAttribute="top" secondItem="jvu-mZ-SzH" secondAttribute="bottom" constant="12" id="LlZ-yz-KPl"/>
                             <constraint firstItem="S7a-oX-UHP" firstAttribute="trailing" secondItem="ogZ-OY-Cc3" secondAttribute="trailing" constant="30" id="RKr-HA-7J1"/>
                             <constraint firstItem="NkP-wq-iPe" firstAttribute="leading" secondItem="S7a-oX-UHP" secondAttribute="leading" constant="30" id="S60-kZ-E3t"/>
-                            <constraint firstItem="xZO-hv-eTc" firstAttribute="top" secondItem="ogZ-OY-Cc3" secondAttribute="bottom" constant="18" id="aBb-qW-h7w"/>
+                            <constraint firstItem="xZO-hv-eTc" firstAttribute="top" secondItem="ogZ-OY-Cc3" secondAttribute="bottom" constant="12" id="aBb-qW-h7w"/>
                             <constraint firstItem="PiD-zA-paz" firstAttribute="top" secondItem="S7a-oX-UHP" secondAttribute="top" constant="32" id="cXK-yA-5Og"/>
                             <constraint firstItem="0Dm-EG-ciK" firstAttribute="leading" secondItem="S7a-oX-UHP" secondAttribute="leading" constant="30" id="dUW-vF-O2g"/>
-                            <constraint firstItem="jvu-mZ-SzH" firstAttribute="top" secondItem="0Dm-EG-ciK" secondAttribute="bottom" constant="18" id="eeU-bb-vcH"/>
+                            <constraint firstItem="jvu-mZ-SzH" firstAttribute="top" secondItem="0Dm-EG-ciK" secondAttribute="bottom" constant="12" id="eeU-bb-vcH"/>
                             <constraint firstItem="S7a-oX-UHP" firstAttribute="trailing" secondItem="BHc-Qj-v7G" secondAttribute="trailing" constant="30" id="f9r-uv-vJf"/>
                             <constraint firstItem="xZO-hv-eTc" firstAttribute="leading" secondItem="S7a-oX-UHP" secondAttribute="leading" constant="30" id="jaD-dY-Lc6"/>
                             <constraint firstItem="S7a-oX-UHP" firstAttribute="trailing" secondItem="PiD-zA-paz" secondAttribute="trailing" constant="206" id="juX-hT-MvV"/>
                             <constraint firstItem="BHc-Qj-v7G" firstAttribute="leading" secondItem="S7a-oX-UHP" secondAttribute="leading" constant="30" id="k3O-nY-Feq"/>
-                            <constraint firstItem="0Dm-EG-ciK" firstAttribute="top" secondItem="xZO-hv-eTc" secondAttribute="bottom" constant="18" id="lng-CE-AFZ"/>
+                            <constraint firstItem="0Dm-EG-ciK" firstAttribute="top" secondItem="xZO-hv-eTc" secondAttribute="bottom" constant="12" id="lng-CE-AFZ"/>
                             <constraint firstItem="S7a-oX-UHP" firstAttribute="trailing" secondItem="jvu-mZ-SzH" secondAttribute="trailing" constant="30" id="qiL-yr-uaI"/>
                             <constraint firstItem="S7a-oX-UHP" firstAttribute="trailing" secondItem="NkP-wq-iPe" secondAttribute="trailing" constant="30" id="tkj-im-7RP"/>
                             <constraint firstItem="ogZ-OY-Cc3" firstAttribute="leading" secondItem="S7a-oX-UHP" secondAttribute="leading" constant="30" id="tq3-j8-CoO"/>
                             <constraint firstItem="S7a-oX-UHP" firstAttribute="trailing" secondItem="0Dm-EG-ciK" secondAttribute="trailing" constant="30" id="uWU-iD-2H0"/>
-                            <constraint firstItem="BHc-Qj-v7G" firstAttribute="top" secondItem="NkP-wq-iPe" secondAttribute="bottom" constant="18" id="xEZ-GA-4iz"/>
+                            <constraint firstItem="BHc-Qj-v7G" firstAttribute="top" secondItem="NkP-wq-iPe" secondAttribute="bottom" constant="12" id="xEZ-GA-4iz"/>
                             <constraint firstItem="jvu-mZ-SzH" firstAttribute="leading" secondItem="S7a-oX-UHP" secondAttribute="leading" constant="30" id="xxr-vf-Cd0"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="S7a-oX-UHP"/>
