@@ -31,7 +31,6 @@ class DisplayImageViewController: UIViewController {
             }
         })
     }
-    
 }
 
 extension UIImageView {

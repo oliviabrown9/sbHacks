@@ -16,9 +16,6 @@ class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     let motionManager = CMMotionManager()
     var keyName: String?
     
-    @IBAction func testButton(_ sender: Any) {
-        performSegue(withIdentifier: "toDisplayText", sender: self)
-    }
     // Button IBOutlets
     @IBOutlet weak var buttonA: UIButton!
     @IBOutlet weak var buttonB: UIButton!
@@ -27,6 +24,11 @@ class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     @IBOutlet weak var buttonE: UIButton!
     @IBOutlet weak var buttonF: UIButton!
     @IBOutlet weak var buttonG: UIButton!
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        self.navigationController?.navigationBar.isHidden = true
+    }
     
     
     @IBAction func clipboardButtonPressed(_ sender: Any) {
@@ -93,6 +95,8 @@ class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
             }
         })
     }
+    
+    @IBAction func unwindToHome(segue:UIStoryboardSegue) { }
     
     override func viewDidLoad() {
         super.viewDidLoad()
