@@ -10,6 +10,8 @@
 		0F11F3BD341B5ADE3EF8C306 /* Pods_sbhacks.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA72F70AA5F3B5183C89392B /* Pods_sbhacks.framework */; };
 		7577756220140372003A1419 /* DisplayTextViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7577756120140372003A1419 /* DisplayTextViewController.swift */; };
 		757775642014037B003A1419 /* DisplayImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 757775632014037B003A1419 /* DisplayImageViewController.swift */; };
+		757775672014359F003A1419 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 757775662014359F003A1419 /* HealthKit.framework */; };
+		7577756920143608003A1419 /* HealthKitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7577756820143608003A1419 /* HealthKitManager.swift */; };
 		75FEFF842013514500DE97A2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75FEFF832013514500DE97A2 /* AppDelegate.swift */; };
 		75FEFF862013514500DE97A2 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75FEFF852013514500DE97A2 /* HomeViewController.swift */; };
 		75FEFF892013514500DE97A2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75FEFF872013514500DE97A2 /* Main.storyboard */; };
@@ -22,6 +24,9 @@
 		41682FED37AA9747E7494245 /* Pods-sbhacks.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-sbhacks.debug.xcconfig"; path = "Pods/Target Support Files/Pods-sbhacks/Pods-sbhacks.debug.xcconfig"; sourceTree = "<group>"; };
 		7577756120140372003A1419 /* DisplayTextViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayTextViewController.swift; sourceTree = "<group>"; };
 		757775632014037B003A1419 /* DisplayImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayImageViewController.swift; sourceTree = "<group>"; };
+		757775652014359F003A1419 /* sbhacks.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = sbhacks.entitlements; sourceTree = "<group>"; };
+		757775662014359F003A1419 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
+		7577756820143608003A1419 /* HealthKitManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthKitManager.swift; sourceTree = "<group>"; };
 		75FEFF802013514500DE97A2 /* sbhacks.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = sbhacks.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		75FEFF832013514500DE97A2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		75FEFF852013514500DE97A2 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
@@ -40,6 +45,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0F11F3BD341B5ADE3EF8C306 /* Pods_sbhacks.framework in Frameworks */,
+				757775672014359F003A1419 /* HealthKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -58,6 +64,7 @@
 		49D7BA66B25B505491C9E642 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				757775662014359F003A1419 /* HealthKit.framework */,
 				AA72F70AA5F3B5183C89392B /* Pods_sbhacks.framework */,
 			);
 			name = Frameworks;
@@ -84,10 +91,12 @@
 		75FEFF822013514500DE97A2 /* sbhacks */ = {
 			isa = PBXGroup;
 			children = (
+				757775652014359F003A1419 /* sbhacks.entitlements */,
 				75FEFF832013514500DE97A2 /* AppDelegate.swift */,
 				75FEFF852013514500DE97A2 /* HomeViewController.swift */,
 				7577756120140372003A1419 /* DisplayTextViewController.swift */,
 				757775632014037B003A1419 /* DisplayImageViewController.swift */,
+				7577756820143608003A1419 /* HealthKitManager.swift */,
 				75FEFF872013514500DE97A2 /* Main.storyboard */,
 				75FEFF8A2013514500DE97A2 /* Assets.xcassets */,
 				75FEFF8C2013514500DE97A2 /* LaunchScreen.storyboard */,
@@ -133,6 +142,11 @@
 					75FEFF7F2013514500DE97A2 = {
 						CreatedOnToolsVersion = 9.2;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.HealthKit = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -236,6 +250,7 @@
 				75FEFF862013514500DE97A2 /* HomeViewController.swift in Sources */,
 				75FEFF842013514500DE97A2 /* AppDelegate.swift in Sources */,
 				757775642014037B003A1419 /* DisplayImageViewController.swift in Sources */,
+				7577756920143608003A1419 /* HealthKitManager.swift in Sources */,
 				7577756220140372003A1419 /* DisplayTextViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -374,11 +389,12 @@
 			baseConfigurationReference = 41682FED37AA9747E7494245 /* Pods-sbhacks.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = sbhacks/sbhacks.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 8GEKYYW3CQ;
 				INFOPLIST_FILE = sbhacks/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.apple.sbhacks;
+				PRODUCT_BUNDLE_IDENTIFIER = com.okitsolivia.sbhacks;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -390,11 +406,12 @@
 			baseConfigurationReference = EE97F6080AE013718391C725 /* Pods-sbhacks.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = sbhacks/sbhacks.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 8GEKYYW3CQ;
 				INFOPLIST_FILE = sbhacks/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.apple.sbhacks;
+				PRODUCT_BUNDLE_IDENTIFIER = com.okitsolivia.sbhacks;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
