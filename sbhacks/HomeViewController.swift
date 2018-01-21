@@ -14,6 +14,7 @@ class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     
     var databaseRef: DatabaseReference!
     let motionManager = CMMotionManager()
+    var keyName: String?
     
     @IBAction func testButton(_ sender: Any) {
         performSegue(withIdentifier: "toDisplayText", sender: self)
@@ -70,14 +71,25 @@ class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     private func setupListener() {
         
         databaseRef.child("State").observe(.childChanged, with: { (snapshot) in
-            let type: String = snapshot.value as! String
-            
-            if type == "image" {
-                self.performSegue(withIdentifier: "toDisplayImage", sender: self)
-            }
-
-            else if type == "string" {
-                self.performSegue(withIdentifier: "toDisplayText", sender: self)
+            if snapshot.key == "done" {
+                if snapshot.value as! String == "true" {
+                    self.databaseRef.child("State").observeSingleEvent(of: .value, with: { (snapshot) in
+                        if let result = snapshot.children.allObjects as? [DataSnapshot] {
+                            for child in result {
+                                let key = child.key;
+                                if (key.contains("keyName")) {
+                                    self.keyName = (child.value as! String)
+                                    if self.keyName == "clipboardText" {
+                                        self.performSegue(withIdentifier: "toDisplayText", sender: self)
+                                    }
+                                    else if self.keyName == "photo" {
+                                        self.performSegue(withIdentifier: "toDisplayImage", sender: self)
+                                    }
+                                }
+                            }
+                        }
+                    })
+                }
             }
         })
     }
@@ -123,6 +135,14 @@ class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
             }
         }
         picker.dismiss(animated: true, completion: nil)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toDisplayText" {
+            let destination = segue.destination as! DisplayTextViewController
+            destination.keyName = keyName
+            
+        }
     }
 }
 

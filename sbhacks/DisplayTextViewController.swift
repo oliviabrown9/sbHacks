@@ -12,7 +12,9 @@ import Firebase
 class DisplayTextViewController: UIViewController {
     
     var databaseRef: DatabaseReference!
-    var textToDisplay : String?
+    var keyName: String?
+    var textToDisplay: String?
+    
 
     @IBOutlet weak var displayTextView: UITextView!
     
@@ -24,14 +26,12 @@ class DisplayTextViewController: UIViewController {
         databaseRef.child("Users").observeSingleEvent(of: .value, with: { (snapshot) in
             if let result = snapshot.children.allObjects as? [DataSnapshot] {
                 for child in result {
-                    let key = child.key ;
-                    if (key.contains("clipboardText")) {
+                    if child.key == self.keyName! {
                         self.textToDisplay = child.value as! String;
                         self.displayTextView.text = self.textToDisplay
                     }
                 }
             }
         })
-        
     }
 }
