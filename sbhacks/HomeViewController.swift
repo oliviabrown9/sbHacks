@@ -97,19 +97,43 @@ class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
                                     else if self.keyName == "photo" {
                                         self.performSegue(withIdentifier: "toDisplayImage", sender: self)
                                     }
-                                    else if self.keyName == "link" {
+                                    else if self.keyName == "google" {
                                         self.databaseRef.child("Users").observeSingleEvent(of: .value, with: { (snapshot) in
                                             if let result = snapshot.children.allObjects as? [DataSnapshot] {
                                                 for child in result {
-                                                    if child.key == self.keyName! {
-                                                        if let url = URL.init(string: child.value as! String) {
-                                                            UIApplication.shared.open(url, options: [:])
+                                                    if child.key == "clipboardText" {
+                                                        let searchWords: String = child.value as! String
+                                                        var urlString: String = "http://www.google.com/search?q="
+                                                        var myStringArr = searchWords.components(separatedBy: " ")
+                                                        for word in myStringArr {
+                                                            urlString = urlString + word + "+"
                                                         }
+                                                        
+                                                        let url = URL(string: urlString);
+                                                        UIApplication.shared.open(url!, options: [:])
                                                     }
                                                 }
                                             }
                                         }
                                     )}
+                                    else if self.keyName == "twitter" {
+                                        self.databaseRef.child("Users").observeSingleEvent(of: .value, with: { (snapshot) in
+                                            if let result = snapshot.children.allObjects as? [DataSnapshot] {
+                                                for child in result {
+                                                    if child.key == "clipboardText" {
+                                                        let searchWords: String = child.value as! String
+                                                        var urlString: String = "twitter://post?message="
+                                                        let myStringArr = searchWords.components(separatedBy: " ")
+                                                        for word in myStringArr {
+                                                            urlString = urlString + word + "%20"
+                                                        }
+                                                        let url = URL(string: urlString);
+                                                        UIApplication.shared.open(url!, options: [:])
+                                                    }
+                                                }
+                                            }
+                                        })
+                                    }
                                 }
                             }
                         }
@@ -146,7 +170,7 @@ class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
                     return
                 }
                 var data = Data()
-                data = UIImageJPEGRepresentation(pickedImage, 0.5)! // compression quality might need to be greater
+                data = UIImageJPEGRepresentation(pickedImage, 1.0)! // compression quality might need to be greater
                 
                 // upload path
                 let filePath = "\("photo")"
