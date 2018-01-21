@@ -146,7 +146,7 @@ class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
                     return
                 }
                 var data = Data()
-                data = UIImageJPEGRepresentation(pickedImage, 0.3)! // compression quality might need to be greater
+                data = UIImageJPEGRepresentation(pickedImage, 0.5)! // compression quality might need to be greater
                 
                 // upload path
                 let filePath = "\("photo")"
@@ -200,7 +200,7 @@ class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
             
             self.pedoMeter.startUpdates(from: midnightOfToday) { (data: CMPedometerData?, error) -> Void in
                 DispatchQueue.main.async(execute: { () -> Void in
-                    if(error == nil){
+                    if(error == nil) {
                         self.databaseRef.child("Users").updateChildValues(["numSteps": data!.numberOfSteps])
                     }
                 })
