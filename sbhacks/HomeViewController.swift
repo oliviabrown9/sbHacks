@@ -9,8 +9,9 @@
 import UIKit
 import Firebase
 import CoreMotion
+import CoreLocation
 
-class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, CLLocationManagerDelegate {
     
     var days:[String] = []
     var stepsTaken:[Int] = []
@@ -18,6 +19,8 @@ class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     var databaseRef: DatabaseReference!
     let motionManager = CMMotionManager()
     let pedoMeter = CMPedometer()
+    let locationManager = CLLocationManager()
+    
     var keyName: String?
     
     // Button IBOutlets
@@ -150,6 +153,23 @@ class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
             }
         }
         picker.dismiss(animated: true, completion: nil)
+    }
+    
+    @IBAction func locationPressed(_ sender: Any) {
+        self.locationManager.requestWhenInUseAuthorization()
+        
+        if CLLocationManager.locationServicesEnabled() {
+            locationManager.delegate = self
+            locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+            locationManager.startUpdatingLocation()
+        }
+        
+        let currentLat = locationManager.location?.coordinate.latitude
+        let currentLong = locationManager.location?.coordinate.longitude
+        self.databaseRef.child("Users").updateChildValues(["lat": currentLat as Any, "long": currentLong as Any])
+    }
+    
+    private func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
     }
     
     @IBAction func pedometerPressed(_ sender: Any) {
