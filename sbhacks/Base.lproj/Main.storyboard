@@ -12,6 +12,7 @@
     <customFonts key="customFonts">
         <array key="Avenir.ttc">
             <string>Avenir-Black</string>
+            <string>Avenir-Book</string>
             <string>Avenir-Medium</string>
         </array>
     </customFonts>
@@ -213,27 +214,27 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aCA-1z-6o3">
-                                <rect key="frame" x="30" y="150.66666666666669" width="315" height="577.33333333333326"/>
-                                <string key="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</string>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Rei-2k-Txu">
+                                <rect key="frame" x="30" y="150.66666666666669" width="315" height="607.33333333333326"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="20"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="pZN-5t-d6v" firstAttribute="trailing" secondItem="aCA-1z-6o3" secondAttribute="trailing" constant="30" id="Ahe-QT-Nwm"/>
-                            <constraint firstItem="aCA-1z-6o3" firstAttribute="top" secondItem="s00-or-ukq" secondAttribute="bottom" constant="20" id="F1y-7S-Vib"/>
-                            <constraint firstItem="aCA-1z-6o3" firstAttribute="leading" secondItem="pZN-5t-d6v" secondAttribute="leading" constant="30" id="Q9o-9v-Saw"/>
+                            <constraint firstItem="Rei-2k-Txu" firstAttribute="top" secondItem="s00-or-ukq" secondAttribute="bottom" constant="20" id="Bqf-TL-YcN"/>
                             <constraint firstItem="s00-or-ukq" firstAttribute="top" secondItem="pZN-5t-d6v" secondAttribute="top" constant="32" id="RgC-8S-Msc"/>
-                            <constraint firstItem="pZN-5t-d6v" firstAttribute="bottom" secondItem="aCA-1z-6o3" secondAttribute="bottom" constant="50" id="fHX-xg-Xp4"/>
+                            <constraint firstItem="pZN-5t-d6v" firstAttribute="trailing" secondItem="Rei-2k-Txu" secondAttribute="trailing" constant="30" id="elH-53-GMZ"/>
+                            <constraint firstItem="Rei-2k-Txu" firstAttribute="leading" secondItem="pZN-5t-d6v" secondAttribute="leading" constant="30" id="flL-Wu-nqf"/>
+                            <constraint firstItem="pZN-5t-d6v" firstAttribute="bottom" secondItem="Rei-2k-Txu" secondAttribute="bottom" constant="20" id="qKi-dE-Aik"/>
                             <constraint firstItem="s00-or-ukq" firstAttribute="leading" secondItem="pZN-5t-d6v" secondAttribute="leading" constant="30" id="rYl-yl-29E"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="pZN-5t-d6v"/>
                     </view>
                     <connections>
-                        <outlet property="displayTextField" destination="aCA-1z-6o3" id="zDn-Me-kFT"/>
+                        <outlet property="displayTextView" destination="Rei-2k-Txu" id="Qsb-V1-yES"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6q8-dc-INs" userLabel="First Responder" sceneMemberID="firstResponder"/>
