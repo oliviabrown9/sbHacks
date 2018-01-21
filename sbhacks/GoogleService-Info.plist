@@ -17,21 +17,21 @@
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.apple.sbhacks</string>
+	<string>com.okitsolivia.sbhacks</string>
 	<key>PROJECT_ID</key>
 	<string>sbhacks-6e5fa</string>
 	<key>STORAGE_BUCKET</key>
 	<string>sbhacks-6e5fa.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
-	<true></true>
+	<true/>
 	<key>IS_ANALYTICS_ENABLED</key>
-	<false></false>
+	<false/>
 	<key>IS_APPINVITE_ENABLED</key>
-	<false></false>
+	<false/>
 	<key>IS_GCM_ENABLED</key>
-	<true></true>
+	<true/>
 	<key>IS_SIGNIN_ENABLED</key>
-	<true></true>
+	<true/>
 	<key>GOOGLE_APP_ID</key>
 	<string>1:240082589538:ios:c3becff7642543a4</string>
 	<key>DATABASE_URL</key>

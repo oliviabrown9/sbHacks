@@ -84,7 +84,7 @@ class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         
         databaseRef.child("State").observe(.childChanged, with: { (snapshot) in
             if snapshot.key == "done" {
-                if snapshot.value as! Bool == true {
+                if snapshot.value as! String == "true" {
                     self.databaseRef.child("State").observeSingleEvent(of: .value, with: { (snapshot) in
                         if let result = snapshot.children.allObjects as? [DataSnapshot] {
                             for child in result {
@@ -195,7 +195,6 @@ class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         }
     }
     
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toDisplayText" {
             let destination = segue.destination as! DisplayTextViewController
@@ -205,22 +204,5 @@ class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
             let destination = segue.destination as! DisplayImageViewController
             destination.keyName = keyName
         }
-    }
-}
-
-extension UIView {
-    func applyGradient(colors: [UIColor]) -> Void {
-        self.applyGradient(colors: colors, locations: nil)
-    }
-    
-    func applyGradient(colors: [UIColor], locations: [NSNumber]?) -> Void {
-        let gradient: CAGradientLayer = CAGradientLayer()
-        gradient.frame = self.bounds
-        gradient.colors = colors.map { $0.cgColor }
-        gradient.locations = locations
-        
-        self.layer.insertSublayer(gradient, at: 0)
-        self.layer.masksToBounds = true
-        gradient.cornerRadius = 12
     }
 }

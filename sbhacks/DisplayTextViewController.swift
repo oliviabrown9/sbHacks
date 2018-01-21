@@ -27,7 +27,7 @@ class DisplayTextViewController: UIViewController {
             if let result = snapshot.children.allObjects as? [DataSnapshot] {
                 for child in result {
                     if child.key == self.keyName! {
-                        self.textToDisplay = child.value as! String;
+                        self.textToDisplay = (child.value as! String);
                         self.displayTextView.text = self.textToDisplay
                     }
                 }
