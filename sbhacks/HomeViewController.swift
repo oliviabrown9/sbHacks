@@ -141,7 +141,10 @@ class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         if segue.identifier == "toDisplayText" {
             let destination = segue.destination as! DisplayTextViewController
             destination.keyName = keyName
-            
+        }
+        else if segue.identifier == "toDisplayImage" {
+            let destination = segue.destination as! DisplayImageViewController
+            destination.keyName = keyName
         }
     }
 }
