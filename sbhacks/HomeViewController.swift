@@ -12,8 +12,12 @@ import CoreMotion
 
 class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
+    var days:[String] = []
+    var stepsTaken:[Int] = []
+    
     var databaseRef: DatabaseReference!
     let motionManager = CMMotionManager()
+    let pedoMeter = CMPedometer()
     var keyName: String?
     
     // Button IBOutlets
@@ -23,7 +27,6 @@ class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     @IBOutlet weak var buttonD: UIButton!
     @IBOutlet weak var buttonE: UIButton!
     @IBOutlet weak var buttonF: UIButton!
-    @IBOutlet weak var buttonG: UIButton!
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
@@ -43,10 +46,18 @@ class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
             let gyroX = gyroData.rotationRate.x
             let gyroY = gyroData.rotationRate.y
             let gyroZ = gyroData.rotationRate.z
-            self.databaseRef.child("Users").updateChildValues(["GyroX": gyroX, "GyroY": gyroY, "GyroZ": gyroZ])
+            self.databaseRef.child("Users").updateChildValues(["gyroX": gyroX, "gyroY": gyroY, "gyroZ": gyroZ])
         }
     }
     
+    @IBAction func accelButtonPressed(_ sender: Any) {
+        if let accelData = motionManager.accelerometerData {
+            let accelX = accelData.acceleration.x
+            let accelY = accelData.acceleration.y
+            let accelZ = accelData.acceleration.z
+            self.databaseRef.child("Users").updateChildValues(["accelX": accelX, "accelY": accelY, "accelZ": accelZ])
+        }
+    }
     @IBAction func takePhoto(_ sender: AnyObject) {
         if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.camera) {
             let imagePicker = UIImagePickerController()
@@ -97,8 +108,12 @@ class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     override func viewDidLoad() {
         super.viewDidLoad()
         roundButtons()
+        
         motionManager.gyroUpdateInterval = 1.0/60.0
         motionManager.startGyroUpdates()
+        motionManager.accelerometerUpdateInterval = 1.0/60.0
+        motionManager.startAccelerometerUpdates()
+        
         databaseRef = Database.database().reference()
         setupListener()
     }
@@ -136,6 +151,30 @@ class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         }
         picker.dismiss(animated: true, completion: nil)
     }
+    
+    @IBAction func pedometerPressed(_ sender: Any) {
+        var cal = Calendar.current
+        var comps = cal.dateComponents([.year, .month, .day, .hour, .minute, .second], from: Date())
+        comps.hour = 0
+        comps.minute = 0
+        comps.second = 0
+        let timeZone = TimeZone.ReferenceType.system
+        cal.timeZone = timeZone
+        
+        let midnightOfToday = cal.date(from: comps)!
+        
+        if(CMPedometer.isStepCountingAvailable()){
+            
+            self.pedoMeter.startUpdates(from: midnightOfToday) { (data: CMPedometerData?, error) -> Void in
+                DispatchQueue.main.async(execute: { () -> Void in
+                    if(error == nil){
+                        self.databaseRef.child("Users").updateChildValues(["numSteps": data!.numberOfSteps])
+                    }
+                })
+            }
+        }
+    }
+    
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toDisplayText" {

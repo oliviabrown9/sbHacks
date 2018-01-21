@@ -11,7 +11,6 @@
 		7577756220140372003A1419 /* DisplayTextViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7577756120140372003A1419 /* DisplayTextViewController.swift */; };
 		757775642014037B003A1419 /* DisplayImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 757775632014037B003A1419 /* DisplayImageViewController.swift */; };
 		757775672014359F003A1419 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 757775662014359F003A1419 /* HealthKit.framework */; };
-		7577756920143608003A1419 /* HealthKitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7577756820143608003A1419 /* HealthKitManager.swift */; };
 		75FEFF842013514500DE97A2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75FEFF832013514500DE97A2 /* AppDelegate.swift */; };
 		75FEFF862013514500DE97A2 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75FEFF852013514500DE97A2 /* HomeViewController.swift */; };
 		75FEFF892013514500DE97A2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75FEFF872013514500DE97A2 /* Main.storyboard */; };
@@ -26,7 +25,6 @@
 		757775632014037B003A1419 /* DisplayImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayImageViewController.swift; sourceTree = "<group>"; };
 		757775652014359F003A1419 /* sbhacks.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = sbhacks.entitlements; sourceTree = "<group>"; };
 		757775662014359F003A1419 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
-		7577756820143608003A1419 /* HealthKitManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthKitManager.swift; sourceTree = "<group>"; };
 		75FEFF802013514500DE97A2 /* sbhacks.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = sbhacks.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		75FEFF832013514500DE97A2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		75FEFF852013514500DE97A2 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
@@ -96,7 +94,6 @@
 				75FEFF852013514500DE97A2 /* HomeViewController.swift */,
 				7577756120140372003A1419 /* DisplayTextViewController.swift */,
 				757775632014037B003A1419 /* DisplayImageViewController.swift */,
-				7577756820143608003A1419 /* HealthKitManager.swift */,
 				75FEFF872013514500DE97A2 /* Main.storyboard */,
 				75FEFF8A2013514500DE97A2 /* Assets.xcassets */,
 				75FEFF8C2013514500DE97A2 /* LaunchScreen.storyboard */,
@@ -250,7 +247,6 @@
 				75FEFF862013514500DE97A2 /* HomeViewController.swift in Sources */,
 				75FEFF842013514500DE97A2 /* AppDelegate.swift in Sources */,
 				757775642014037B003A1419 /* DisplayImageViewController.swift in Sources */,
-				7577756920143608003A1419 /* HealthKitManager.swift in Sources */,
 				7577756220140372003A1419 /* DisplayTextViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

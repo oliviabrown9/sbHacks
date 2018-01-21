@@ -90,9 +90,12 @@
                                     <constraint firstAttribute="height" constant="80" id="KYI-hs-wtx"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="24"/>
-                                <state key="normal" title="Log Heart Rate">
+                                <state key="normal" title="Log Accelerometer">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="accelButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="63B-Jy-VLf"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NkP-wq-iPe">
                                 <rect key="frame" x="30" y="597" width="315" height="80"/>
@@ -115,6 +118,9 @@
                                 <state key="normal" title="Log Pedometer">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="pedometerPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="eoa-hL-TqY"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="JARVIS" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PiD-zA-paz">
                                 <rect key="frame" x="30" y="120" width="139" height="55"/>
