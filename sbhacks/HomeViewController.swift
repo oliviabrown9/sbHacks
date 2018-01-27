@@ -78,6 +78,7 @@ class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         buttonD.layer.cornerRadius = 12
         buttonE.layer.cornerRadius = 12
         buttonF.layer.cornerRadius = 12
+        
     }
     
     private func setupListener() {
@@ -108,149 +109,153 @@ class HomeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
                                                         for word in myStringArr {
                                                             urlString = urlString + word + "+"
                                                         }
+                                                        urlString = urlString.replacingOccurrences(of: "\n", with: "+", options: .literal, range: nil)
                                                         
-                                                        let url = URL(string: urlString);
-                                                        UIApplication.shared.open(url!, options: [:])
+                                                        if let url = URL(string: urlString) {
+                                                        UIApplication.shared.open(url, options: [:])
                                                     }
                                                 }
                                             }
                                         }
+                                    }
                                     )}
-                                    else if self.keyName == "twitter" {
-                                        self.databaseRef.child("Users").observeSingleEvent(of: .value, with: { (snapshot) in
-                                            if let result = snapshot.children.allObjects as? [DataSnapshot] {
-                                                for child in result {
-                                                    if child.key == "clipboardText" {
-                                                        let searchWords: String = child.value as! String
-                                                        var urlString: String = "twitter://post?message="
-                                                        let myStringArr = searchWords.components(separatedBy: " ")
-//                                                        var letterCount: Int = 0
-                                                        for word in myStringArr {
-                                                            urlString = urlString + word + "%20"
-                                                            urlString = urlString.replacingOccurrences(of: "\n", with: "", options: .literal, range: nil)
-        
-                                                        }
-                                                        let url: URL?
-                                                        if urlString.count >= 280 {
-                                                            let indexEnd = urlString.index(urlString.startIndex, offsetBy: 279)
-                                                            let substring = urlString[..<indexEnd]
-                                                            url = URL(string: String(describing: substring))
-                                                        }
-                                                        else {
-                                                            url = URL(string: urlString)
-                                                        }
-                                                        UIApplication.shared.open(url!, options: [:])
+                                else if self.keyName == "twitter" {
+                                    self.databaseRef.child("Users").observeSingleEvent(of: .value, with: { (snapshot) in
+                                        if let result = snapshot.children.allObjects as? [DataSnapshot] {
+                                            for child in result {
+                                                if child.key == "clipboardText" {
+                                                    let searchWords: String = child.value as! String
+                                                    var urlString: String = "twitter://post?message="
+                                                    let myStringArr = searchWords.components(separatedBy: " ")
+                                                    for word in myStringArr {
+                                                        urlString = urlString + word + "%20"
+                                                        urlString = urlString.replacingOccurrences(of: "\n", with: "%20", options: .literal, range: nil)
+                                                        
+                                                    }
+                                                    let url: URL?
+                                                    if urlString.count >= 280 {
+                                                        let indexEnd = urlString.index(urlString.startIndex, offsetBy: 279)
+                                                        let substring = urlString[..<indexEnd]
+                                                        url = URL(string: String(describing: substring))
+                                                    }
+                                                    else {
+                                                        url = URL(string: urlString)
+                                                    }
+                                                    if let myUrl = url {
+                                                        UIApplication.shared.open(myUrl, options: [:])
                                                     }
                                                 }
                                             }
-                                        })
-                                    }
+                                        }
+                                    })
                                 }
                             }
                         }
-                    })
-                }
-            }
-        })
-    }
-    
-    @IBAction func unwindToHome(segue:UIStoryboardSegue) { }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        roundButtons()
-        
-        motionManager.gyroUpdateInterval = 1.0/60.0
-        motionManager.startGyroUpdates()
-        motionManager.accelerometerUpdateInterval = 1.0/60.0
-        motionManager.startAccelerometerUpdates()
-        
-        databaseRef = Database.database().reference()
-        setupListener()
-    }
-    
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-        if let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
-            
-            let storage = Storage.storage()
-            let storageRef = storage.reference()
-            
-            Auth.auth().signInAnonymously() { (user, error) in
-                if error != nil {
-                    print(error as Any)
-                    return
-                }
-                var data = Data()
-                data = UIImageJPEGRepresentation(pickedImage, 0.3)! // compression quality might need to be greater
-                
-                // upload path
-                let filePath = "\("photo")"
-                let metaData = StorageMetadata()
-                metaData.contentType = "image/jpg"
-                storageRef.child(filePath).putData(data, metadata: metaData){(metaData,error) in
-                    if let error = error {
-                        print(error.localizedDescription)
-                        return
-                    }
-                    else {
-                        // store downloadURL in database
-                        let downloadURL = metaData!.downloadURL()!.absoluteString
-                        self.databaseRef.child("Users").updateChildValues(["photo": downloadURL])
-                    }
-                }
-            }
-        }
-        picker.dismiss(animated: true, completion: nil)
-    }
-    
-    @IBAction func locationPressed(_ sender: Any) {
-        self.locationManager.requestWhenInUseAuthorization()
-        
-        if CLLocationManager.locationServicesEnabled() {
-            locationManager.delegate = self
-            locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
-            locationManager.startUpdatingLocation()
-        }
-        
-        let currentLat = locationManager.location?.coordinate.latitude
-        let currentLong = locationManager.location?.coordinate.longitude
-        self.databaseRef.child("Users").updateChildValues(["lat": currentLat as Any, "long": currentLong as Any])
-    }
-    
-    private func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-    }
-    
-    @IBAction func pedometerPressed(_ sender: Any) {
-        var cal = Calendar.current
-        var comps = cal.dateComponents([.year, .month, .day, .hour, .minute, .second], from: Date())
-        comps.hour = 0
-        comps.minute = 0
-        comps.second = 0
-        let timeZone = TimeZone.ReferenceType.system
-        cal.timeZone = timeZone
-        
-        let midnightOfToday = cal.date(from: comps)!
-        
-        if(CMPedometer.isStepCountingAvailable()){
-            
-            self.pedoMeter.startUpdates(from: midnightOfToday) { (data: CMPedometerData?, error) -> Void in
-                DispatchQueue.main.async(execute: { () -> Void in
-                    if(error == nil) {
-                        self.databaseRef.child("Users").updateChildValues(["numSteps": data!.numberOfSteps])
                     }
                 })
             }
         }
+    })
+}
+
+@IBAction func unwindToHome(segue:UIStoryboardSegue) { }
+
+override func viewDidLoad() {
+    super.viewDidLoad()
+    roundButtons()
+    
+    motionManager.gyroUpdateInterval = 1.0/60.0
+    motionManager.startGyroUpdates()
+    motionManager.accelerometerUpdateInterval = 1.0/60.0
+    motionManager.startAccelerometerUpdates()
+    
+    databaseRef = Database.database().reference()
+    setupListener()
+}
+
+func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+    if let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
+        
+        let storage = Storage.storage()
+        let storageRef = storage.reference()
+        
+        Auth.auth().signInAnonymously() { (user, error) in
+            if error != nil {
+                print(error as Any)
+                return
+            }
+            var data = Data()
+            data = UIImageJPEGRepresentation(pickedImage, 0.3)! // compression quality might need to be greater
+            
+            // upload path
+            let filePath = "\("photo")"
+            print("hello");
+            let metaData = StorageMetadata()
+            metaData.contentType = "image/jpg"
+            storageRef.child(filePath).putData(data, metadata: metaData){(metaData,error) in
+                if let error = error {
+                    print(error.localizedDescription)
+                    return
+                }
+                else {
+                    // store downloadURL in database
+                    let downloadURL = metaData!.downloadURL()!.absoluteString
+                    self.databaseRef.child("Users").updateChildValues(["photo": downloadURL])
+                }
+            }
+        }
+    }
+    picker.dismiss(animated: true, completion: nil)
+}
+
+@IBAction func locationPressed(_ sender: Any) {
+    self.locationManager.requestWhenInUseAuthorization()
+    
+    if CLLocationManager.locationServicesEnabled() {
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+        locationManager.startUpdatingLocation()
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "toDisplayText" {
-            let destination = segue.destination as! DisplayTextViewController
-            destination.keyName = keyName
-        }
-        else if segue.identifier == "toDisplayImage" {
-            let destination = segue.destination as! DisplayImageViewController
-            destination.keyName = keyName
+    let currentLat = locationManager.location?.coordinate.latitude
+    let currentLong = locationManager.location?.coordinate.longitude
+    self.databaseRef.child("Users").updateChildValues(["lat": currentLat as Any, "long": currentLong as Any])
+}
+
+private func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+}
+
+@IBAction func pedometerPressed(_ sender: Any) {
+    var cal = Calendar.current
+    var comps = cal.dateComponents([.year, .month, .day, .hour, .minute, .second], from: Date())
+    comps.hour = 0
+    comps.minute = 0
+    comps.second = 0
+    let timeZone = TimeZone.ReferenceType.system
+    cal.timeZone = timeZone
+    
+    let midnightOfToday = cal.date(from: comps)!
+    
+    if(CMPedometer.isStepCountingAvailable()){
+        
+        self.pedoMeter.startUpdates(from: midnightOfToday) { (data: CMPedometerData?, error) -> Void in
+            DispatchQueue.main.async(execute: { () -> Void in
+                if(error == nil) {
+                    self.databaseRef.child("Users").updateChildValues(["numSteps": data!.numberOfSteps])
+                }
+            })
         }
     }
+}
+
+override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    if segue.identifier == "toDisplayText" {
+        let destination = segue.destination as! DisplayTextViewController
+        destination.keyName = keyName
+    }
+    else if segue.identifier == "toDisplayImage" {
+        let destination = segue.destination as! DisplayImageViewController
+        destination.keyName = keyName
+    }
+}
 }
