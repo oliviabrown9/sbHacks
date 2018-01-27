@@ -189,7 +189,6 @@ func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMe
             
             // upload path
             let filePath = "\("photo")"
-            print("hello");
             let metaData = StorageMetadata()
             metaData.contentType = "image/jpg"
             storageRef.child(filePath).putData(data, metadata: metaData){(metaData,error) in
